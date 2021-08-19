@@ -1,5 +1,9 @@
 package br.com.elo7.test.bean;
-
+/***
+ * 
+ * @author Susan Braun Rosa
+ *
+ */
 public enum Direction {
 
 	N("N", 1), E("E", 1), S("S", -1), W("W", -1);

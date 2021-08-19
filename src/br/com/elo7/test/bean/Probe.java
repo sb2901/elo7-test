@@ -2,6 +2,11 @@ package br.com.elo7.test.bean;
 
 import br.com.elo7.test.constants.Constants;
 
+/**
+ * 
+ * @author Susan Braun Rosa
+ *
+ */
 public class Probe {
 
 	private int x;
@@ -16,6 +21,11 @@ public class Probe {
 		this.planet = planet;
 	}
 
+	/***
+	 * Move a  sonda.
+	 * Caso a sonda ultrapasse o limite do mapa a ação não será executada, ou seja,
+	 * a sonda permanece parada
+	 */
 	private void move() {
 
 		int xToVerify = getX();
@@ -24,26 +34,25 @@ public class Probe {
 		switch (direction) {
 		case N:
 		case S:
-			xToVerify = direction.getIncrement();
+			yToVerify += direction.getIncrement();
 			break;
 		case W:
 		case E:
-			yToVerify = direction.getIncrement();
+			xToVerify += direction.getIncrement();
 			break;
-		// default:
-		// throw new IllegalArgumentException("Unexpected value: " + direction);
-		// TODO: Lançar exception??
 		}
 
 		if (planet.canMove(xToVerify, yToVerify)) {
 			setX(xToVerify);
 			setY(yToVerify);
-		} else {
-			// TODO: Lançar exception??
-		}
+		} 
 
 	}
 
+	/**
+	 * 
+	 * @param action
+	 */
 	public void doAction(String action) {
 		if (Constants.MOVE.equalsIgnoreCase(action)) {
 			move();
@@ -52,6 +61,10 @@ public class Probe {
 		}
 	}
 
+	/**
+	 * Define pra qual direção a sonda deve apontar
+	 * @param action
+	 */
 	private void switchDirection(String action) {
 		if (Constants.LEFT.equalsIgnoreCase(action)) {
 			direction = direction.previous();
@@ -60,26 +73,50 @@ public class Probe {
 		}
 	}
 
-	private String showPosition() {
+	/**
+	 * 
+	 * @return
+	 */
+	public String showPosition() {
 		return String.format("%d %d %s", getX(), getY(), getDirection().getValue());
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/***
+	 * 
+	 * @return
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/***
+	 * 
+	 * @return
+	 */
 	public Direction getDirection() {
 		return direction;
 	}
 
+	/***
+	 * 
+	 * @param x
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/***
+	 * 
+	 * @param y
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
