@@ -2,7 +2,7 @@ package br.com.elo7.test.main;
 
 import br.com.elo7.test.controller.NASAMarsController;
 
-public class Main {
+public class MainFixedData {
 
 	String data = "5 5\n" 
 			+ "1 2 N\n" 
@@ -11,7 +11,7 @@ public class Main {
 			+ "MMRMMRMRRM";
 
 	public static void main(String... args) {
-		new Main().init();
+		new MainFixedData().init();
 
 	}
 
